@@ -11,14 +11,14 @@ const ready = async () => {
     await dbConnect();
 }
 
-// Listen
-app.listen(PORT, ready);
+
 // Middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan("dev"));
 
 // Rutas
-
 app.use("/api", apiIndex);
 
+// Listen
+app.listen(PORT, ready);
