@@ -1,4 +1,4 @@
-import { createService, readService } from "../services/products.service.js";
+import { createService, readService, createMock, createMocks } from "../services/products.service.js";
 
 // FUNCIONES
 async function createProduct(req, res, next) {
@@ -14,12 +14,31 @@ async function createProduct(req, res, next) {
 
 async function readProducts(req, res, next) {
     try {
-        const all = await readService();
-        return res.status(200).json({ message: "READED.", response: all })
+        const { page } = req.query;
+        const all = await readService(page);
+        return res.status(200).json({ message: "READED.", response: all });
     } catch (error) {
         return res.status(500).json({ error });
-
     }
 }
 
-export { createProduct, readProducts };
+async function createMockProduct(req, res, next) {
+    try {
+        const one = await createMock();
+        return res.status(200).json({ message: "CREATED.", response: one });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    };
+}
+
+async function createMockProducts(req, res, next) {
+    try {
+        const { quantity } = req.params;
+        const products = await createMocks(quantity);
+        return res.status(200).json({ message: "CREATED.", products })
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+}
+
+export { createProduct, readProducts, createMockProduct, createMockProducts };
