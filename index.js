@@ -1,12 +1,18 @@
 import express from "express";
 import morgan from "morgan";
-import dbConnect from "./src/utils/dbConnect.util.js";
-import apiIndex from "./src/routers/index.router.js";
+import dbConnect from "./src/utils/mongoConnect.util.js";
+import indexRouter from "./src/routers/index.router.js";
 import envUtil from "./src/utils/env.util.js";
 import errorHandler from "./src/middlewares/errorHandler.mid.js";
 import pathHandler from "./src/middlewares/pathHandler.mid.js";
+import compression from "express-compression";
+import cookieParser from "cookie-parser";
+import cors from "cors";
+import session from "express-session";
+import MongoStore from "connect-mongo";
 import cluster from "cluster";
 import { cpus } from "os";
+
 
 const { PORT, MODE } = envUtil;
 
@@ -33,19 +39,42 @@ if (cluster.isPrimary) {
     app.listen(PORT, ready);
 }
 */
+
+// Funcion de ejecucion del servidor.
 async function ready() {
     console.log("MODE: " + MODE);
     console.log("Server redy on PORT: " + PORT);
-    await dbConnect();
+    //await dbConnect();
 }
 
 // Middlewares
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 app.use(morgan("dev"));
+app.use(compression());
+app.use(cookieParser(envUtil.SECRET_KEY));
+// Cors para compartir recursos de origenes crusados.
+app.use(
+    cors({
+        // origin:true, esta abierto a todo el publico. Para que sea solo para el front desplegado, pegar la base del Uri en string.
+        origin: true,
+        //origin: envUtil.BASE_URL,
+        // Permite el cruce de cookies.
+        credentials: true
+    })
+);
+
+// Configuracion de session con Mongo Storage.
+app.use(session({
+    secret: envUtil.SECRET_KEY,
+    resave: true,
+    saveUninitialized: true,
+    store: new MongoStore({ mongoUrl: envUtil.MONGO_LINK, ttl: 60 * 60 * 24 }), // Default 14 dias.
+}));
 
 // Rutas
-app.use("/api", apiIndex);
+app.use("/api", indexRouter);
 
 // Middleware de manejo de errores.
 app.use(errorHandler);
