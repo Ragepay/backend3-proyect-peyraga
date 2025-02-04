@@ -1,6 +1,5 @@
 import express from "express";
 import morgan from "morgan";
-import dbConnect from "./src/utils/mongoConnect.util.js";
 import indexRouter from "./src/routers/index.router.js";
 import envUtil from "./src/utils/env.util.js";
 import errorHandler from "./src/middlewares/errorHandler.mid.js";
@@ -22,8 +21,6 @@ const app = express();
 // Servidor simple.
 // Listen
 app.listen(PORT, ready);
-
-
 /*
 // Servidor con Clusterizacion
 if (cluster.isPrimary) {
@@ -44,7 +41,6 @@ if (cluster.isPrimary) {
 async function ready() {
     console.log("MODE: " + MODE);
     console.log("Server redy on PORT: " + PORT);
-    //await dbConnect();
 }
 
 // Middlewares
@@ -52,7 +48,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(morgan("dev"));
-app.use(compression());
+//app.use(compression());
 app.use(cookieParser(envUtil.SECRET_KEY));
 // Cors para compartir recursos de origenes crusados.
 app.use(
@@ -65,6 +61,7 @@ app.use(
     })
 );
 
+/*
 // Configuracion de session con Mongo Storage.
 app.use(session({
     secret: envUtil.SECRET_KEY,
@@ -72,6 +69,7 @@ app.use(session({
     saveUninitialized: true,
     store: new MongoStore({ mongoUrl: envUtil.MONGO_LINK, ttl: 60 * 60 * 24 }), // Default 14 dias.
 }));
+*/ 
 
 // Rutas
 app.use("/api", indexRouter);

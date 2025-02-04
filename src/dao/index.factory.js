@@ -2,7 +2,6 @@ import dbConnect from "../utils/mongoConnect.util.js";
 import argsUtil from "../utils/args.util.js";
 
 const { persistence } = argsUtil;
-console.log(persistence);
 
 /*
 // la importacion condicionada "tradicional" NO FUNCIONAAA!!!
