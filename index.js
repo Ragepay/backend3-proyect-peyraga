@@ -44,11 +44,11 @@ async function ready() {
 }
 
 // Middlewares
+app.use(compression());// Compression con gzip, standar // Con brotli es mas comprimido pero consume mas recursos del servidor{ brotli: { enabled: true, zlib: {} } }
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(morgan("dev"));
-//app.use(compression());
 app.use(cookieParser(envUtil.SECRET_KEY));
 // Cors para compartir recursos de origenes crusados.
 app.use(
@@ -69,7 +69,7 @@ app.use(session({
     saveUninitialized: true,
     store: new MongoStore({ mongoUrl: envUtil.MONGO_LINK, ttl: 60 * 60 * 24 }), // Default 14 dias.
 }));
-*/ 
+*/
 
 // Rutas
 app.use("/api", indexRouter);

@@ -1,11 +1,9 @@
 import productsApiRouter from "./products.api.js";
-//import cookieApiRouter from "./cookies.api.js";
 import sessionApiRouter from "./sessions.api.js";
 import usersApiRouter from "./users.api.js";
 import cartsApiRouter from "./carts.api.js";
 import processApiRouter from "./process.api.js";
 import CustomRouter from "../utils/CustomRouter.util.js";
-//import sum from "../../utils/process.util.js";
 import { fork } from "child_process";
 
 class ApiRouter extends CustomRouter {
@@ -19,7 +17,7 @@ class ApiRouter extends CustomRouter {
         this.use("/sessions", ["PUBLIC"], sessionApiRouter);
         this.use("/users", ["PUBLIC"], usersApiRouter);
         this.use("/carts", ["PUBLIC"], cartsApiRouter);
-        this.read("/process", ["PUBLIC"], processApiRouter);
+        this.use("/process", ["PUBLIC"], processApiRouter);
     }
 }
 
