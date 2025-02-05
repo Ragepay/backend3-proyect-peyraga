@@ -44,7 +44,7 @@ async function ready() {
 }
 
 // Middlewares
-app.use(compression());// Compression con gzip, standar // Con brotli es mas comprimido pero consume mas recursos del servidor{ brotli: { enabled: true, zlib: {} } }
+app.use(compression());// Compression con gzip, standar // Con brotli es mas comprimido pero consume mas recursos del servidor { brotli: { enabled: true, zlib: {} } }
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
