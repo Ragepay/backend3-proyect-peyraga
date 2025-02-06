@@ -42,9 +42,9 @@ passport.use("register", new LocalStrategy(
             const data = { ...req.body, verifyCode, photo: `https://ui-avatars.com/api/?background=random&name=${email}` };
             const user = await UsersManager.create(data);
             // Enviar mensaje SMS mediante twilio por registro.
-            //await sendWhatsappMessage(user.phone);
+            // await sendWhatsappMessage(user.phone);
             // Enviar email de verificacion.
-            await sendVerifyEmail({ to: user.email, verifyCode });
+            // await sendVerifyEmail({ to: user.email, verifyCode });
             // Devolvemos user en el objeto req.user.
             return done(null, user);
         } catch (error) {

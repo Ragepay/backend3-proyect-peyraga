@@ -6,18 +6,21 @@ async function createMockProduct() {
     const stock = faker.number.int(100);
     const price = faker.commerce.price({ min: 100, max: 2000, dec: 2 });
     const image = faker.image.url();
-    const category = "";
+    const category = faker.helpers.arrayElement(["", "computadoras", "perifericos", "celulares"]);
     return { name, description, stock, price, image, category };
 }
 
 async function createMockUser() {
-    const name = faker.commerce.productName();
-    const description = faker.commerce.productDescription();
-    const stock = faker.number.int(100);
-    const price = faker.commerce.price({ min: 100, max: 2000, dec: 2 });
-    const image = faker.image.url();
-    const category = "";
-    return { name, description, stock, price, image, category };
+    const name = faker.person.fullName();
+    const email = faker.internet.email();
+    const photo = faker.image.avatar();
+    const phone = faker.phone.number();
+    const emailGoogle = faker.datatype.boolean() ? faker.internet.email() : null;
+    const password = faker.internet.password();
+    const role = faker.helpers.arrayElement(['USER', 'PREM', 'ADMIN']);
+    const verifyCode = faker.string.alphanumeric(24).toLowerCase();
+
+    return { name, email, photo, phone, emailGoogle, password, role, verifyCode };
 }
 
 export { createMockProduct, createMockUser };

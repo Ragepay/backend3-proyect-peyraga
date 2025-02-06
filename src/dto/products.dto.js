@@ -13,12 +13,12 @@ class ProductsDTO {
             this.updateAt = new Date();
         }
 
-        this.title = data.title;
+        this.name = data.name;
         this.description = data.description || "desciption";
         this.price = data.price || 10;
         this.stock = data.stock || 10;
-        this.category = data.category || "ALL";
-        this.photo = data.photo || "https://via.placeholder.com/150";
+        this.category = data.category || "";
+        this.image = data.image || "https://via.placeholder.com/150";
     }
 }
 

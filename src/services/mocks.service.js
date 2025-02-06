@@ -1,7 +1,9 @@
 import dao from "../dao/index.factory.js";
 import { createMockProduct, createMockUser } from "../utils/mocks.util.js";
+import { createProductsService } from "./products.service.js";
 
-const { UsersManager, ProductsManager } = dao;
+
+const { UsersManager } = dao;
 
 async function createMockUsers(quantity) {
     // Creamos el array de Users, que sera devuelto al controlador.
@@ -26,7 +28,7 @@ async function createMockProducts(quantity) {
         // Creamos un usuario mediante un mock de user.
         const one = await createMockProduct();
         // Lo guardamos en la persistencia.
-        const product = await ProductsManager.create(one);
+        const product = await createProductsService(one);
         // Lo pusheamos en el array.
         products.push(product);
     }
