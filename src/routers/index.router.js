@@ -3,8 +3,8 @@ import sessionApiRouter from "./sessions.api.js";
 import usersApiRouter from "./users.api.js";
 import cartsApiRouter from "./carts.api.js";
 import processApiRouter from "./process.api.js";
+import mocksApiRouter from "./mocks.api.js";
 import CustomRouter from "../utils/CustomRouter.util.js";
-import { fork } from "child_process";
 
 class ApiRouter extends CustomRouter {
     constructor() {
@@ -18,6 +18,7 @@ class ApiRouter extends CustomRouter {
         this.use("/users", ["PUBLIC"], usersApiRouter);
         this.use("/carts", ["PUBLIC"], cartsApiRouter);
         this.use("/process", ["PUBLIC"], processApiRouter);
+        this.use("/mocks", ["PUBLIC"], mocksApiRouter);
     }
 }
 
