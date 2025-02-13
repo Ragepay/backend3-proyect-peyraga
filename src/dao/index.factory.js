@@ -1,5 +1,6 @@
 import dbConnect from "../utils/mongoConnect.util.js";
 import argsUtil from "../utils/args.util.js";
+import loggerUtil from "../utils/logger.util.js"
 
 const { persistence } = argsUtil;
 
@@ -18,7 +19,7 @@ let dao = {};
 
 switch (persistence) {
   case "MEMORY":
-    console.log("connected to memory system");
+    loggerUtil.INFO("connected to memory system");
     // si la persistencia es la memoria tengo que llenar dao con las importaciones de los managers de la memoria
     const { default: ProductsManagerMemory } = await import(
       "./memory/ProductsManager.memory.js"
@@ -36,7 +37,7 @@ switch (persistence) {
     };
     break;
   case "FS":
-    console.log("connected to file system");
+    loggerUtil.INFO("connected to file system");
     // si la persistencia es fs tengo que llenar dao con las importaciones de los managers de fs
     const { default: ProductsManagerFS } = await import(
       "./fs/ProductsManager.fs.js"
@@ -50,11 +51,11 @@ switch (persistence) {
     };
     break;
   case "SQL":
-    console.log("connected to SQL");
+    loggerUtil.INFO("connected to SQL");
 
     break;
   default:
-    console.log("connected to mongo database");
+    loggerUtil.INFO("connected to mongo database");
     //sacamos la conexion de mongo del archivo de configuracion principal del servidor
     //DEBIDO A QUE SOLO TENEMOS QUE CONECTARNOS A MONGO SI LA PERSISTENCIA SELECCIONADA ES MONGO
     dbConnect();

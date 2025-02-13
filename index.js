@@ -11,6 +11,7 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 import cluster from "cluster";
 import { cpus } from "os";
+import loggerUtil from "./src/utils/logger.util.js";
 
 
 const { PORT, MODE } = envUtil;
@@ -28,7 +29,7 @@ if (cluster.isPrimary) {
         cluster.fork();
     }
     cluster.on('exit', (worker) => {
-        console.log(`Worker ${worker.process.pid} murió, creando otro...`);
+        loggerUtil.INFO(`Worker ${worker.process.pid} murió, creando otro...`);
         cluster.fork();
     });
 } else {
@@ -39,8 +40,8 @@ if (cluster.isPrimary) {
 
 // Funcion de ejecucion del servidor.
 async function ready() {
-    console.log("MODE: " + MODE);
-    console.log("Server redy on PORT: " + PORT);
+    loggerUtil.INFO("MODE: " + MODE);
+    loggerUtil.INFO("Server redy on PORT: " + PORT);  
 }
 
 // Middlewares
