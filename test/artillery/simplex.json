@@ -1,0 +1,267 @@
+{
+  "aggregate": {
+    "counters": {
+      "vusers.created_by_name.0": 100,
+      "vusers.created": 100,
+      "http.requests": 200,
+      "http.codes.200": 200,
+      "http.responses": 200,
+      "http.downloaded_bytes": 3400,
+      "plugins.metrics-by-endpoint./api/artillery/simplex.codes.200": 200,
+      "vusers.failed": 0,
+      "vusers.completed": 100
+    },
+    "rates": {
+      "http.request_rate": 200
+    },
+    "firstCounterAt": 1739628798569,
+    "firstHistogramAt": 1739628798640,
+    "lastCounterAt": 1739628799565,
+    "lastHistogramAt": 1739628799565,
+    "firstMetricAt": 1739628798569,
+    "lastMetricAt": 1739628799565,
+    "period": 1739628790000,
+    "summaries": {
+      "http.response_time": {
+        "min": 1,
+        "max": 44,
+        "count": 200,
+        "mean": 4.1,
+        "p50": 2,
+        "median": 2,
+        "p75": 3,
+        "p90": 10.1,
+        "p95": 16,
+        "p99": 37,
+        "p999": 40
+      },
+      "http.response_time.2xx": {
+        "min": 1,
+        "max": 44,
+        "count": 200,
+        "mean": 4.1,
+        "p50": 2,
+        "median": 2,
+        "p75": 3,
+        "p90": 10.1,
+        "p95": 16,
+        "p99": 37,
+        "p999": 40
+      },
+      "plugins.metrics-by-endpoint.response_time./api/artillery/simplex": {
+        "min": 1,
+        "max": 44,
+        "count": 200,
+        "mean": 4.1,
+        "p50": 2,
+        "median": 2,
+        "p75": 3,
+        "p90": 10.1,
+        "p95": 16,
+        "p99": 37,
+        "p999": 40
+      },
+      "vusers.session_length": {
+        "min": 5.8,
+        "max": 98.7,
+        "count": 100,
+        "mean": 15.4,
+        "p50": 7.9,
+        "median": 7.9,
+        "p75": 13.1,
+        "p90": 33.5,
+        "p95": 62.2,
+        "p99": 76,
+        "p999": 76
+      }
+    },
+    "histograms": {
+      "http.response_time": {
+        "min": 1,
+        "max": 44,
+        "count": 200,
+        "mean": 4.1,
+        "p50": 2,
+        "median": 2,
+        "p75": 3,
+        "p90": 10.1,
+        "p95": 16,
+        "p99": 37,
+        "p999": 40
+      },
+      "http.response_time.2xx": {
+        "min": 1,
+        "max": 44,
+        "count": 200,
+        "mean": 4.1,
+        "p50": 2,
+        "median": 2,
+        "p75": 3,
+        "p90": 10.1,
+        "p95": 16,
+        "p99": 37,
+        "p999": 40
+      },
+      "plugins.metrics-by-endpoint.response_time./api/artillery/simplex": {
+        "min": 1,
+        "max": 44,
+        "count": 200,
+        "mean": 4.1,
+        "p50": 2,
+        "median": 2,
+        "p75": 3,
+        "p90": 10.1,
+        "p95": 16,
+        "p99": 37,
+        "p999": 40
+      },
+      "vusers.session_length": {
+        "min": 5.8,
+        "max": 98.7,
+        "count": 100,
+        "mean": 15.4,
+        "p50": 7.9,
+        "median": 7.9,
+        "p75": 13.1,
+        "p90": 33.5,
+        "p95": 62.2,
+        "p99": 76,
+        "p999": 76
+      }
+    }
+  },
+  "intermediate": [
+    {
+      "counters": {
+        "vusers.created_by_name.0": 100,
+        "vusers.created": 100,
+        "http.requests": 200,
+        "http.codes.200": 200,
+        "http.responses": 200,
+        "http.downloaded_bytes": 3400,
+        "plugins.metrics-by-endpoint./api/artillery/simplex.codes.200": 200,
+        "vusers.failed": 0,
+        "vusers.completed": 100
+      },
+      "rates": {
+        "http.request_rate": 200
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1739628798569,
+      "firstHistogramAt": 1739628798640,
+      "lastCounterAt": 1739628799565,
+      "lastHistogramAt": 1739628799565,
+      "firstMetricAt": 1739628798569,
+      "lastMetricAt": 1739628799565,
+      "period": "1739628790000",
+      "summaries": {
+        "http.response_time": {
+          "min": 1,
+          "max": 44,
+          "count": 200,
+          "mean": 4.1,
+          "p50": 2,
+          "median": 2,
+          "p75": 3,
+          "p90": 10.1,
+          "p95": 16,
+          "p99": 37,
+          "p999": 40
+        },
+        "http.response_time.2xx": {
+          "min": 1,
+          "max": 44,
+          "count": 200,
+          "mean": 4.1,
+          "p50": 2,
+          "median": 2,
+          "p75": 3,
+          "p90": 10.1,
+          "p95": 16,
+          "p99": 37,
+          "p999": 40
+        },
+        "plugins.metrics-by-endpoint.response_time./api/artillery/simplex": {
+          "min": 1,
+          "max": 44,
+          "count": 200,
+          "mean": 4.1,
+          "p50": 2,
+          "median": 2,
+          "p75": 3,
+          "p90": 10.1,
+          "p95": 16,
+          "p99": 37,
+          "p999": 40
+        },
+        "vusers.session_length": {
+          "min": 5.8,
+          "max": 98.7,
+          "count": 100,
+          "mean": 15.4,
+          "p50": 7.9,
+          "median": 7.9,
+          "p75": 13.1,
+          "p90": 33.5,
+          "p95": 62.2,
+          "p99": 76,
+          "p999": 76
+        }
+      },
+      "histograms": {
+        "http.response_time": {
+          "min": 1,
+          "max": 44,
+          "count": 200,
+          "mean": 4.1,
+          "p50": 2,
+          "median": 2,
+          "p75": 3,
+          "p90": 10.1,
+          "p95": 16,
+          "p99": 37,
+          "p999": 40
+        },
+        "http.response_time.2xx": {
+          "min": 1,
+          "max": 44,
+          "count": 200,
+          "mean": 4.1,
+          "p50": 2,
+          "median": 2,
+          "p75": 3,
+          "p90": 10.1,
+          "p95": 16,
+          "p99": 37,
+          "p999": 40
+        },
+        "plugins.metrics-by-endpoint.response_time./api/artillery/simplex": {
+          "min": 1,
+          "max": 44,
+          "count": 200,
+          "mean": 4.1,
+          "p50": 2,
+          "median": 2,
+          "p75": 3,
+          "p90": 10.1,
+          "p95": 16,
+          "p99": 37,
+          "p999": 40
+        },
+        "vusers.session_length": {
+          "min": 5.8,
+          "max": 98.7,
+          "count": 100,
+          "mean": 15.4,
+          "p50": 7.9,
+          "median": 7.9,
+          "p75": 13.1,
+          "p90": 33.5,
+          "p95": 62.2,
+          "p99": 76,
+          "p999": 76
+        }
+      }
+    }
+  ]
+}

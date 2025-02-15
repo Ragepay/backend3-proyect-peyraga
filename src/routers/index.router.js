@@ -4,6 +4,7 @@ import usersApiRouter from "./users.api.js";
 import cartsApiRouter from "./carts.api.js";
 import processApiRouter from "./process.api.js";
 import mocksApiRouter from "./mocks.api.js";
+import artilleryApiRouter from "./artillery.api.js";
 import CustomRouter from "../utils/CustomRouter.util.js";
 
 class ApiRouter extends CustomRouter {
@@ -19,6 +20,7 @@ class ApiRouter extends CustomRouter {
         this.use("/carts", ["PUBLIC"], cartsApiRouter);
         this.use("/process", ["PUBLIC"], processApiRouter);
         this.use("/mocks", ["PUBLIC"], mocksApiRouter);
+        this.use("/artillery", ["PUBLIC"], artilleryApiRouter);
     }
 }
 

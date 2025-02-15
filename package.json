@@ -13,7 +13,9 @@
     "dev-mem": "nodemon ./index.js --persistence MEMORY",
     "dev-sql": "nodemon ./index.js --persistence SQL",
     "args-fs": "nodemon ./index.js --persistence fs 8080 development mongo user=igna",
-    "tdd": "node ./test/suma.tdd.js"
+    "tdd": "node ./test/suma.tdd.js",
+    "simplex":"artillery quick --count 100 --num 2 http://localhost:9000/api/artillery/simplex -o ./test/artillery/simplex.json",
+    "complex":"artillery quick --count 500 --num 2 http://localhost:9000/api/artillery/complex -o ./test/artillery/complex.json"
   },
   "keywords": [],
   "author": "",
