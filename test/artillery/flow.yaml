@@ -1,0 +1,31 @@
+config:
+  pluggins:
+    metrics-by-endpoint : {}
+  target: http://localhost:9000/api
+  phases:
+    - duration: 20
+      arrivalRate: 10
+scenarios:
+  #- name: read all products and read one product.
+  #  flow:
+  #    - get:
+  #        url: /products
+  #    - get:
+  #        url: /products/679bdfebdd0337057c0395ca
+  - name: login and read products
+    flow:
+      - log: Login
+      - post:
+          url: /sessions/login
+          json: 
+            email: benjapey99@gmail.com
+            password: Hola1234
+      - get:
+          url: /products/
+      - get:
+          url: /products/679bdfebdd0337057c0395ca
+      - log: Login
+      - post:
+          url: /sessions/online
+
+
