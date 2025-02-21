@@ -40,8 +40,7 @@ if (cluster.isPrimary) {
 
 // Funcion de ejecucion del servidor.
 async function ready() {
-    loggerUtil.INFO("MODE: " + MODE);
-    loggerUtil.INFO("Server redy on PORT: " + PORT);
+    loggerUtil.INFO(`MODE: ${PORT}: + PORT: ${PORT}`);
 }
 
 // Middlewares
