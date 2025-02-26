@@ -16,7 +16,9 @@
     "tdd": "node ./test/suma.tdd.js",
     "simplex": "artillery quick --count 100 --num 5 http://localhost:9000/api/artillery/simplex -o ./test/artillery/simplex.json",
     "complex": "artillery quick --count 100 --num 5 http://localhost:9000/api/artillery/complex -o ./test/artillery/complex.json",
-    "performance": "artillery run ./test/artillery/flow.yaml --record --key a9__7VscE-IFomhKuS1MnnRmgzJbJOoLIWE --output ./test/artillery/flow.json"
+    "performance": "artillery run ./test/artillery/flow.yaml --record --key a9__7VscE-IFomhKuS1MnnRmgzJbJOoLIWE --output ./test/artillery/flow.json",
+    "docker": "docker build -t backend3-peyraga .",
+    "container":"docker run -p 8080:8080 backend3-peyraga"
   },
   "keywords": [],
   "author": "",
