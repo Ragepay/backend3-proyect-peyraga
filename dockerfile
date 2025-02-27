@@ -1,5 +1,5 @@
 # Definir el tipo de aplicacion que voy a hacer.
-FROM node
+FROM node:20
 
 # Establece el directorio de trabajo.
 WORKDIR /backend3-peyraga
@@ -7,7 +7,7 @@ WORKDIR /backend3-peyraga
 # Copia los archivos de la aplicación
 COPY package*.json ./
 # Instalar con modules de npm.
-RUN npm install --build-from-source
+RUN npm install
 COPY . .
 
 # Expone el puerto de la aplicación.

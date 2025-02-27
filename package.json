@@ -17,15 +17,17 @@
     "simplex": "artillery quick --count 100 --num 5 http://localhost:9000/api/artillery/simplex -o ./test/artillery/simplex.json",
     "complex": "artillery quick --count 100 --num 5 http://localhost:9000/api/artillery/complex -o ./test/artillery/complex.json",
     "performance": "artillery run ./test/artillery/flow.yaml --record --key a9__7VscE-IFomhKuS1MnnRmgzJbJOoLIWE --output ./test/artillery/flow.json",
-    "docker": "docker build -t backend3-peyraga .",
-    "container":"docker run -p 8080:8080 backend3-peyraga"
+    "image": "docker build -t backend3-peyraga .",
+    "container": "docker run -p 9000:9000 --name backend3-container backend3-peyraga",
+    "dockerHub": "docker tag backend3-peyraga ragepay/backend3-peyraga:latest",
+    "pushDockerHub": "docker push ragepay/backend3-peyraga:latest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "artillery-plugin-metrics-by-endpoint": "^1.16.0",
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
     "calculator-module-ragepay-1724": "^2.0.0",
     "commander": "^13.0.0",
     "connect-mongo": "^5.1.0",
