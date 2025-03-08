@@ -18,12 +18,12 @@ const { PORT, MODE } = envUtil;
 
 const app = express();
 
-
+/*
 // Servidor simple.
 // Listen
 app.listen(PORT, ready);
+*/
 
-/*
 // Servidor con Clusterizacion
 if (cluster.isPrimary) {
     for (let index = 1; index <= cpus().length; index++) {
@@ -37,7 +37,7 @@ if (cluster.isPrimary) {
     // Listen
     app.listen(PORT, ready);
 }
-*/
+
 // Funcion de ejecucion del servidor.
 async function ready() {
     loggerUtil.INFO(`MODE: ${MODE} | PORT: ${PORT}`);

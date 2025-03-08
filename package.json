@@ -19,8 +19,12 @@
     "performance": "artillery run ./test/artillery/flow.yaml --record --key a9__7VscE-IFomhKuS1MnnRmgzJbJOoLIWE --output ./test/artillery/flow.json",
     "image": "docker build -t backend3-peyraga .",
     "container": "docker run -p 9000:9000 --name backend3-container backend3-peyraga",
-    "dockerHub": "docker tag backend3-peyraga ragepay/backend3-peyraga:latest",
-    "pushDockerHub": "docker push ragepay/backend3-peyraga:latest"
+    "tagContainer": "docker tag backend3-peyraga ragepay/backend3-peyraga:latest",
+    "pushContainer": "docker push ragepay/backend3-peyraga:latest",
+    "apply": "kubectl apply -f ./manifest.yaml",
+    "pods": "kubectl get pods",
+    "services": "kubectl get services",
+    "deployments": "kubectl get deployments"
   },
   "keywords": [],
   "author": "",
