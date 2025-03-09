@@ -14,7 +14,7 @@ const schema = new Schema({
     verify: { type: Boolean, default: false },
     verifyCode: { type: String, required: true },
     isOnline: { type: Boolean, default: false }
-});
+}, { timestamps: true });
 
 const Users = model(collection, schema);
 export default Users;

@@ -1,0 +1,49 @@
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        name:
+          type: string
+          description: "Product name."
+        description:
+          type: string
+          description: "Detailed description of the product."
+        stock:
+          type: integer
+          default: 1
+          description: "Number of items available in stock."
+        price:
+          type: number
+          default: 1
+          description: "Product price."
+        image:
+          type: string
+          format: uri
+          default: "https://via.placeholder.com/150"
+          description: "URL of the product image."
+        category:
+          type: string
+          enum: ["", "computadoras", "perifericos", "celulares"]
+          description: "Product category. Can be 'computadoras', 'perifericos', or 'celulares'."
+        createdAt:
+          type: string
+          format: date-time
+          description: "Timestamp of when the product was created."
+        updatedAt:
+          type: string
+          format: date-time
+          description: "Timestamp of the last update."
+      required:
+        - name
+      example:
+        _id: "679bdfebdd0337057c0395ca"
+        name: "Fantastic Bronze Chicken"
+        description: "The tan Salad combines Ethiopia aesthetics with Polonium-based durability"
+        stock: 10
+        price: 1168.4
+        image: "https://loremflickr.com/164/3017?lock=3426585802408636"
+        category: ""
+        createdAt: "2025-01-30T20:24:11.572Z"
+        updatedAt: "2025-01-30T20:24:11.572Z"
+        __v: 0

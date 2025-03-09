@@ -10,7 +10,7 @@ const schema = new Schema({
     user_id: { type: Types.ObjectId, ref: "users", required: true },
     quantity: { type: Number, required: true },
     state: { type: String, enum: ["reserved", "paid", "delivered"], default: "reserved" }
-});
+}, { timestamps: true });
 
 const Cart = model(collection, schema);
 export default Cart;

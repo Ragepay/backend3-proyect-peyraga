@@ -12,7 +12,8 @@ import MongoStore from "connect-mongo";
 import cluster from "cluster";
 import { cpus } from "os";
 import loggerUtil from "./src/utils/logger.util.js";
-
+import docSpec from "./src/utils/docSpec.util.js";
+import { serve, setup } from "swagger-ui-express";
 
 const { PORT, MODE } = envUtil;
 
@@ -73,6 +74,9 @@ app.use(session({
 
 // Rutas
 app.use("/api", indexRouter);
+
+// Middleware para Documentar con swagger.
+app.use("/api/docs", serve, setup(docSpec));
 
 // Middleware de manejo de errores.
 app.use(errorHandler);

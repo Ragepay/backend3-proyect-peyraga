@@ -1,0 +1,42 @@
+components:
+  schemas:
+    Cart:
+      type: object
+      properties:
+        product_id:
+          type: string
+          format: uuid
+          description: "Reference to the product being ordered."
+        user_id:
+          type: string
+          format: uuid
+          description: "Reference to the user placing the order."
+        quantity:
+          type: integer
+          description: "Number of units ordered."
+        state:
+          type: string
+          enum: ["reserved", "paid", "delivered"]
+          default: "reserved"
+          description: "Current status of the order."
+        createdAt:
+          type: string
+          format: date-time
+          description: "Timestamp of when the order was created."
+        updatedAt:
+          type: string
+          format: date-time
+          description: "Timestamp of the last update."
+      required:
+        - product_id
+        - user_id
+        - quantity
+      example:
+        _id: "67ccfa7d91d54f09a295037d"
+        product_id: "6751e099a6e4cd89eda68ff0"
+        user_id: "6750e0a0ab1a835a4ce66855"
+        quantity: 1
+        state: "reserved"
+        createdAt: "2025-03-09T02:18:37.639Z"
+        updatedAt: "2025-03-09T02:18:37.639Z"
+        __v: 0
