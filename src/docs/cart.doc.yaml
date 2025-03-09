@@ -40,3 +40,27 @@ components:
         createdAt: "2025-03-09T02:18:37.639Z"
         updatedAt: "2025-03-09T02:18:37.639Z"
         __v: 0
+paths:
+    /api/carts:
+      get:
+        summary: Obtiene todos los carritos.
+        tags:
+          - Carts
+      post:
+        summary: Crea un carrito de compra.
+        tags:
+          - Carts
+    /api/carts/{id}:
+      get:
+        summary: Obtiene un carrito por id.
+        tags:
+          - Carts
+      put:
+        summary: Modifica un carrito por id.
+        tags:
+          - Carts
+      delete:
+        summary: Elimina un carrito por id.
+        tags:
+          - Carts
+  

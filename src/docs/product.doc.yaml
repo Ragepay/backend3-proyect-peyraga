@@ -47,3 +47,26 @@ components:
         createdAt: "2025-01-30T20:24:11.572Z"
         updatedAt: "2025-01-30T20:24:11.572Z"
         __v: 0
+paths:
+    /api/products:
+      get:
+        summary: Obtiene todos los productos.
+        tags:
+          - Products
+      post:
+        summary: Crea un producto.
+        tags:
+          - Products
+    /api/products/{id}:
+      get:
+        summary: Obtiene un producto por id.
+        tags:
+          - Products
+      put:
+        summary: Modifica un producto por id.
+        tags:
+          - Products
+      delete:
+        summary: Elimina un producto por id.
+        tags:
+          - Products

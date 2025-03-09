@@ -67,3 +67,34 @@ components:
         isOnline: true
         __v: 0
         updatedAt: "2025-03-09T02:15:41.340Z"
+paths:
+    /api/sessions/register:
+      post:
+        summary: Registra al usuario en la base de datos (incluye hash y generacion de verifycode).
+        tags:
+          - Sessions
+    /api/sessions/login:
+      post:
+        summary: Iniciar sesion con usario previamente registrado (incluye guardado de token en cookie).
+        tags:
+          - Sessions
+    /api/sessions/signout:
+      post:
+        summary: Cerrar sesion, eliminando/venciendo el token de la cookie.
+        tags:
+          - Sessions
+    /api/sessions/online:
+      post:
+        summary: Verifica si el usario esta online.
+        tags:
+          - Sessions
+    /api/sessions/auth/google:
+      get:
+        summary: Registro con google oauth.
+        tags:
+          - Sessions
+    /api/sessions/verify:
+      get:
+        summary: Verificacion del verifyCode para verificar la cuenta.
+        tags:
+          - Sessions
