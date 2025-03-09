@@ -47,26 +47,127 @@ components:
         createdAt: "2025-01-30T20:24:11.572Z"
         updatedAt: "2025-01-30T20:24:11.572Z"
         __v: 0
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: token
+
 paths:
-    /api/products:
-      get:
-        summary: Obtiene todos los productos.
-        tags:
-          - Products
-      post:
-        summary: Crea un producto.
-        tags:
-          - Products
-    /api/products/{id}:
-      get:
-        summary: Obtiene un producto por id.
-        tags:
-          - Products
-      put:
-        summary: Modifica un producto por id.
-        tags:
-          - Products
-      delete:
-        summary: Elimina un producto por id.
-        tags:
-          - Products
+  /api/products:
+    get:
+      summary: Obtiene todos los productos.
+      tags:
+        - Products
+      responses:
+        "200":
+          description: Lista de productos obtenida correctamente.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "500":
+          description: Fatal Server Error.
+
+    post:
+      summary: Crea un producto.
+      tags:
+        - Products
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        "201":
+          description: Producto creado exitosamente.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "400":
+          description: Datos de entrada incorrectos/Falta de Datos/Errores varios
+        "401":
+          description: Bad Auth!
+        "500":
+          description: Fatal Server Error.
+
+  /api/products/{id}:
+    get:
+      summary: Obtiene un producto por id.
+      tags:
+        - Products
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Producto obtenido correctamente.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "404":
+          description: Producto no encontrado.
+        "500":
+          description: Fatal Server Error.
+
+    put:
+      summary: Modifica un producto por id.
+      tags:
+        - Products
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        "200":
+          description: Producto actualizado correctamente.
+        "400":
+          description: Datos inválidos.
+        "404":
+          description: Producto no encontrado.
+        "401":
+          description: Bad Auth!
+        "500":
+          description: Fatal Server Error.
+
+    delete:
+      summary: Elimina un producto por id.
+      tags:
+        - Products
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Producto eliminado correctamente.
+        "404":
+          description: Producto no encontrado.
+        "401":
+          description: Bad Auth!
+        "500":
+          description: Fatal Server Error.

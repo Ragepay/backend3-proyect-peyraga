@@ -1,0 +1,29 @@
+components:
+  responses:
+    Success200:
+      description: Resuelto correctamente.
+    Error500:
+      description: Error interno del servidor.
+
+paths:
+  /api/artillery/simplex:
+    get:
+      summary: Ejecuta un script simple para testear el servidor.
+      tags:
+        - Artillery
+      responses:
+        "200":
+          $ref: "#/components/responses/Success200"
+        "500":
+          $ref: "#/components/responses/Error500"
+
+  /api/artillery/complex:
+    get:
+      summary: Ejecuta un script complejo para testear el servidor.
+      tags:
+        - Artillery
+      responses:
+        "200":
+          $ref: "#/components/responses/Success200"
+        "500":
+          $ref: "#/components/responses/Error500"

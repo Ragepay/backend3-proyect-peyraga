@@ -1,0 +1,27 @@
+components:
+  responses:
+    mocks200:
+      description: Usuarios y productos creados correctamente.
+
+paths:
+  /api/mocks/{users}/{products}:
+    post:
+      summary: Crea y almacena en la BBDD usuarios y productos ingresados por parametro.
+      tags:
+        - Mocks
+      parameters:
+        - name: users
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: products
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          $ref: "#/components/responses/mocks200"
+        "500":
+          $ref: "#/components/responses/Error500"

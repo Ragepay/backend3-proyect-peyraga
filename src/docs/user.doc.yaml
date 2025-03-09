@@ -67,34 +67,117 @@ components:
         isOnline: true
         __v: 0
         updatedAt: "2025-03-09T02:15:41.340Z"
+
+  responses:
+    register201:
+    badAuth:
+    forbidden:
+    notFound:
+    fatal:
+
 paths:
-    /api/sessions/register:
-      post:
-        summary: Registra al usuario en la base de datos (incluye hash y generacion de verifycode).
-        tags:
-          - Sessions
-    /api/sessions/login:
-      post:
-        summary: Iniciar sesion con usario previamente registrado (incluye guardado de token en cookie).
-        tags:
-          - Sessions
-    /api/sessions/signout:
-      post:
-        summary: Cerrar sesion, eliminando/venciendo el token de la cookie.
-        tags:
-          - Sessions
-    /api/sessions/online:
-      post:
-        summary: Verifica si el usario esta online.
-        tags:
-          - Sessions
-    /api/sessions/auth/google:
-      get:
-        summary: Registro con google oauth.
-        tags:
-          - Sessions
-    /api/sessions/verify:
-      get:
-        summary: Verificacion del verifyCode para verificar la cuenta.
-        tags:
-          - Sessions
+  /api/sessions/register:
+    post:
+      summary: Registra al usuario en la base de datos (incluye hash y generacion de verifycode).
+      tags:
+        - Sessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: "benjapey99@gmail.com"
+                password:
+                  type: string
+                  format: password
+                  example: "Hola1234"
+      responses:
+        "201":
+          description: Usuario registrado exitosamente.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          description: Missing credencials/Falta de datos/Datos incorrectos.
+        "401":
+          description: USER ALREADY EXISTS.
+        "500":
+          description: Fatal Server Error.
+
+  /api/sessions/login:
+    post:
+      summary: Iniciar sesión con usuario previamente registrado (incluye guardado de token en cookie).
+      tags:
+        - Sessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: "benjapey99@gmail.com"
+                password:
+                  type: string
+                  format: password
+                  example: "Hola1234"
+      responses:
+        "200":
+          description: Inicio de sesión exitoso. Token guardado en la cookie.
+        "400":
+          description: Credenciales incorrectas.
+        "500":
+          description: Error del servidor.
+
+  /api/sessions/signout:
+    post:
+      summary: Cerrar sesión, eliminando/venciendo el token de la cookie.
+      tags:
+        - Sessions
+      responses:
+        "200":
+          description: Cierre de sesión exitoso. El token se eliminó de la cookie.
+        "500":
+          description: Error del servidor.
+
+  /api/sessions/online:
+    post:
+      summary: Verifica si el usario esta online.
+      tags:
+        - Sessions
+      responses:
+        "200":
+          description: El usuario esta online.
+        "500":
+          description: Error del servidor.
+
+  /api/sessions/auth/google:
+    get:
+      summary: Registro con google oauth.
+      tags:
+        - Sessions
+      responses:
+        "200":
+          description: Usuario haciendo oauth con google.
+        "500":
+          description: Error del servidor.
+
+  /api/sessions/verify:
+    get:
+      summary: Verificacion del verifyCode para verificar la cuenta.
+      tags:
+        - Sessions
+      responses:
+        "200":
+          description: Cuenta verificada.
+        "500":
+          description: Error del servidor.
