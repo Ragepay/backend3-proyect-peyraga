@@ -40,27 +40,120 @@ components:
         createdAt: "2025-03-09T02:18:37.639Z"
         updatedAt: "2025-03-09T02:18:37.639Z"
         __v: 0
+
+  responses:
+    cart200:
+      description: Carrito encontrado.
+    cart201:
+      description: Carrito creado.
+    cart400:
+      description: Faltante de datos.
+    badAuth:
+      description: Bad Auth !
+    forbidden:
+      description: Forbbiden !
+    notFound:
+      description: Not Found !
+
 paths:
-    /api/carts:
-      get:
-        summary: Obtiene todos los carritos.
-        tags:
-          - Carts
-      post:
-        summary: Crea un carrito de compra.
-        tags:
-          - Carts
-    /api/carts/{id}:
-      get:
-        summary: Obtiene un carrito por id.
-        tags:
-          - Carts
-      put:
-        summary: Modifica un carrito por id.
-        tags:
-          - Carts
-      delete:
-        summary: Elimina un carrito por id.
-        tags:
-          - Carts
-  
+  /api/carts:
+    get:
+      summary: Obtiene todos los carritos.
+      tags:
+        - Carts
+      security:
+        - cookieAuth: []
+      responses:
+        "200":
+          $ref: "#/components/responses/cart200"
+        "401":
+          $ref: "#/components/responses/badAuth"
+        "500":
+          $ref: "#/components/responses/Error500"
+
+    post:
+      summary: Crea un carrito de compra.
+      tags:
+        - Carts
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Cart"
+      responses:
+        "200":
+          $ref: "#/components/responses/cart201"
+        "400":
+          $ref: "#/components/responses/cart400"
+        "401":
+          $ref: "#/components/responses/badAuth"
+        "500":
+          $ref: "#/components/responses/Error500"
+
+  /api/carts/{id}:
+    get:
+      summary: Obtiene un carrito por id.
+      tags:
+        - Carts
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          $ref: "#/components/responses/cart200"
+        "401":
+          $ref: "#/components/responses/badAuth"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/Error500"
+    put:
+      summary: Modifica un carrito por id.
+      tags:
+        - Carts
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          $ref: "#/components/responses/cart200"
+        "401":
+          $ref: "#/components/responses/badAuth"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/Error500"
+    delete:
+      summary: Elimina un carrito por id.
+      tags:
+        - Carts
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          $ref: "#/components/responses/cart200"
+        "401":
+          $ref: "#/components/responses/badAuth"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/Error500"

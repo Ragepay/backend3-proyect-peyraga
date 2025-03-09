@@ -143,9 +143,13 @@ paths:
       summary: Cerrar sesión, eliminando/venciendo el token de la cookie.
       tags:
         - Sessions
+      security:
+        - cookieAuth: []
       responses:
         "200":
           description: Cierre de sesión exitoso. El token se eliminó de la cookie.
+        "401":
+          description: Bad Auth!
         "500":
           description: Error del servidor.
 
@@ -154,9 +158,13 @@ paths:
       summary: Verifica si el usario esta online.
       tags:
         - Sessions
+      security:
+        - cookieAuth: []
       responses:
         "200":
           description: El usuario esta online.
+        "401":
+          description: Bad Auth!
         "500":
           description: Error del servidor.
 
@@ -179,5 +187,7 @@ paths:
       responses:
         "200":
           description: Cuenta verificada.
+        "404":
+          description: Codigo no encontrado.
         "500":
           description: Error del servidor.
