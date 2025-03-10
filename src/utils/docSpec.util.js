@@ -12,6 +12,10 @@ const options = {
       {
         url: "http://localhost:9000",
         description: "Servidor local"
+      },
+      {
+        url: "http://urldeprod.com",
+        description: "Servidor de produccion"
       }
     ]
   },

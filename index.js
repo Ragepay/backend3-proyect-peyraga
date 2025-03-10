@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import accessLogStream from "./logs/logger.js";
 import indexRouter from "./src/routers/index.router.js";
 import envUtil from "./src/utils/env.util.js";
 import errorHandler from "./src/middlewares/errorHandler.mid.js";
@@ -49,7 +50,9 @@ app.use(compression());// Compression con gzip, standar // Con brotli es mas com
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
-app.use(morgan("dev"));
+
+app.use(morgan("dev")); // Development.
+app.use(morgan("combined", { stream: accessLogStream })); // Produccion.
 app.use(cookieParser(envUtil.SECRET_KEY));
 // Cors para compartir recursos de origenes crusados.
 app.use(
@@ -72,12 +75,10 @@ app.use(session({
 }));
 */
 
-// Rutas
-app.use("/api", indexRouter);
-
 // Middleware para Documentar con swagger.
 app.use("/api/docs", serve, setup(docSpec));
-
+// Rutas
+app.use("/api", indexRouter);
 // Middleware de manejo de errores.
 app.use(errorHandler);
 app.use(pathHandler); // Debe ser el ultimo, porque recibe rutas no existentes.
