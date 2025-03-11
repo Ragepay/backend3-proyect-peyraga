@@ -21,12 +21,12 @@
     "container": "docker run -p 9000:9000 --name backend3-container backend3-peyraga",
     "tagContainer": "docker tag backend3-peyraga ragepay/backend3-peyraga:latest",
     "pushContainer": "docker push ragepay/backend3-peyraga:latest",
+    "containerPushed": "docker run -p 9000:9000 --name backend3-peyraga ragepay/backend3-peyraga:latest",
     "apply": "kubectl apply -f ./manifest.yaml",
     "pods": "kubectl get pods",
     "services": "kubectl get services",
     "deployments": "kubectl get deployments",
     "super": "mocha ./test/supertest"
-
   },
   "keywords": [],
   "author": "",
