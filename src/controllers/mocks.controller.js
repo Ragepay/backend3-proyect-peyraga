@@ -7,7 +7,7 @@ async function createMocks(req, res) {
     const { users, products } = req.params;
     const message = `MOCKS CREATED: ${users} Users and ${products} Products.`;
     const response = { users: await createMockUsers(users), products: await createMockProducts(products) };
-    return res.json200(message, response);
+    return res.json200(response, message);
 }
 
 export {

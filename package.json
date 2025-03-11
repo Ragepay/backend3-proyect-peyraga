@@ -24,7 +24,9 @@
     "apply": "kubectl apply -f ./manifest.yaml",
     "pods": "kubectl get pods",
     "services": "kubectl get services",
-    "deployments": "kubectl get deployments"
+    "deployments": "kubectl get deployments",
+    "super": "mocha ./test/supertest"
+
   },
   "keywords": [],
   "author": "",
@@ -57,6 +59,9 @@
     "winston": "^3.17.0"
   },
   "devDependencies": {
-    "@faker-js/faker": "^9.4.0"
+    "@faker-js/faker": "^9.4.0",
+    "chai": "^5.2.0",
+    "mocha": "^11.1.0",
+    "supertest": "^7.0.0"
   }
 }
